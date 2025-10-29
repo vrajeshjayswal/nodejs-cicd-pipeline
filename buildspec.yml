@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - echo "Running tests..."
+      - npm test
+      - echo "Build completed on `date`"
+  post_build:
+    commands:
+      - echo "Post-build phase..."
+      - echo "Creating deployment package..."
+
+artifacts:
+  files:
+    - '**/*'
+  name: nodejs-api-artifact
+
+cache:
+  paths:
+    - 'node_modules/**/*'
+
